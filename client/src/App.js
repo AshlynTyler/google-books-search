@@ -1,19 +1,41 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import './App.css';
+import {Search, Saved} from "components.js";
 
-class App extends Component {
-  render() {
+class App extends React.Component() {
+
+  state = {
+    results: [],
+    saved: []
+
+  }
+
+
+  render(){
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <>
+        <div className = "flex-container" id="nav-bar">
+          <div id = "nav-title"> Google Books</div>
+
+          <div id = "nav-search">Search</div>
+
+          <div id = "nav-saved">Saved</div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+
+        <h1>Google Books Search</h1>
+
+        <h3>Search for and Save Books of Interest</h3>
+
+        <Router>
+          <div>
+            <Route exact path ="/" component={Search} />
+            <Route exact path ="/saved" component={Saved} />
+          </div>
+
+        </Router>
+
+      </>
     );
   }
 }
