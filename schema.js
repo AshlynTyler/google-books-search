@@ -7,7 +7,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 
-var Book = new Schema({
+var BooksSchema = new Schema({
 
     title: {
         type: String,
@@ -26,4 +26,8 @@ var Book = new Schema({
     link: {
         type: String
     }
-})
+});
+
+var Books = mongoose.model("Book", BooksSchema);
+
+module.exports = Books;
