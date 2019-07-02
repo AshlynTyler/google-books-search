@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
-import {Search, Saved} from "components.js";
+import {Search, Saved} from "./components";
 
-class App extends React.Component() {
+class App extends React.Component {
 
   state = {
     results: [],
@@ -29,10 +29,15 @@ class App extends React.Component() {
 
         <Router>
           <div>
-            <Route exact path ="/" component={Search} />
-            <Route exact path ="/saved" component={Saved} />
+            <Route
+              exact path='/'
+              render={(props) => <Search {...props} results={this.state.results} />}
+            />
+            <Route
+              exact path='/saved'
+              render={(props) => <Saved {...props} results={this.state.saved} />}
+            />
           </div>
-
         </Router>
 
       </>
