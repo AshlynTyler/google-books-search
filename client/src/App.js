@@ -11,6 +11,18 @@ class App extends React.Component {
 
   }
 
+  submitSearch = (event) =>{
+    
+  }
+
+  saveBook = (event) =>{
+
+  }
+
+  deleteBook = (event) =>{
+
+  }
+
 
   render(){
     return (
@@ -31,7 +43,10 @@ class App extends React.Component {
           <div>
             <Route
               exact path='/'
-              render={(props) => <Search {...props} results={this.state.results} />}
+              render={(props) => <Search {...props} 
+                submitSearch = {this.submitSearch}
+                saveBook = {this.saveBook} 
+                results={this.state.results} />}
             />
             <Route
               exact path='/saved'
