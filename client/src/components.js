@@ -28,6 +28,11 @@ function Search(props){
 function Saved(props){
     return(
         <>
+            <div>
+                <p>Saved Books</p>
+
+                <BookList buttonClick={props.saveBook} buttonText="Delete" list={props.saved}/>
+            </div>
         </>
     )
 }
@@ -35,15 +40,37 @@ function Saved(props){
 export {Search, Saved};
 
 function BookList(props){
+
+
     return(
         <>
+            {props.list.map(index=>(
+
+                <BookDisplay title={index.title} 
+                    authors={index.authors} 
+                    description={index.description}
+                    image={index.image}
+                    link={index.link}
+                    buttonText={props.buttonText}
+                    buttonClick={props.buttonClick}/>
+                )
+
+            )}
         </>
     )
 }
 
 function BookDisplay(props){
     return(
-        <>
-        </>
+        <div>
+            <p>{props.title}</p>
+            <p>{props.authors}</p>
+            <div className = "flex-container">
+                <img src ={props.image} alt="book-image"></img>
+                <p>{props.description}</p>
+            </div>
+            <a href={props.link}>view</a>
+            <button onClick={props.buttonClick}>{props.buttonText}</button>
+        </div>
     )
 }
